@@ -1,15 +1,10 @@
-# Client
-client/node_modules
-client/package-lock.json
+# Node Modules and Package Lock
+**/node_modules
+**/package-lock.json
 
-cleint/dist
-client/src/assets/img/icons
+# Built Files
+**/dist
 
-# Server
-server/node_modules
-server/package-lock.json
-.env
-
-# IDE
+# IDE Files
 .vscode
 .idea
