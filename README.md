@@ -1,4 +1,5 @@
 # Authentication Example
+![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 
 This repository is an example on how I handle user authentication to a website, including role management (Eg. User / Admin)
 
