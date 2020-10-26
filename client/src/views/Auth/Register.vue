@@ -19,7 +19,7 @@
             <label>Confirm Password</label>
             <input class="type-2" v-model="user.password2" type="password" placeholder="Confirm Password" />
 
-            <button class="btn" @click="register">Register</button>
+            <button class="button" @click="register">Register</button>
         </form>
     </div>
 </template>

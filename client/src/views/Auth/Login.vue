@@ -17,7 +17,7 @@
             <label>Password</label>
             <input class="type-2" v-model="user.password" type="password" placeholder="Password" />
 
-            <button class="btn" @click="login">Login</button>
+            <button class="button" @click="login">Login</button>
         </form>
     </div>
 </template>

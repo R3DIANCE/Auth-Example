@@ -33,7 +33,7 @@
         <p>{{ auth.user.username }}</p>
         <p>{{ auth.user._id }}</p>
 
-        <button class="btn" @click="logout">Logout</button>
+        <button class="button" @click="logout">Logout</button>
     </div>
 </template>
 
