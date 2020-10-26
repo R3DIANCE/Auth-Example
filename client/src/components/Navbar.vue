@@ -40,17 +40,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    font-family: sans-serif;
-    font-size: 16px;
-}
-
 nav {
     background-color: #282828;
     width: 100%;
