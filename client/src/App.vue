@@ -15,13 +15,16 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Commissioner&display=swap');
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 
 body {
     color: #fff;
     background-color: #3d3d3d;
     font-family: 'Commissioner', sans-serif;
-    margin: 0;
 }
 
 .button {
