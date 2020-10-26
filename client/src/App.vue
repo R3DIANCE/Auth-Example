@@ -24,7 +24,7 @@ body {
     margin: 0;
 }
 
-.btn {
+.button {
     background-color: #d12727;
     border: none;
     outline: 0;
@@ -37,7 +37,7 @@ body {
     font-size: 16px;
 }
 
-.btn:hover {
+.button:hover {
     background-color: #e24c4c;
     cursor: pointer;
 }
