@@ -1,0 +1,15 @@
+# Client
+client/node_modules
+client/package-lock.json
+
+cleint/dist
+client/src/assets/img/icons
+
+# Server
+server/node_modules
+server/package-lock.json
+.env
+
+# IDE
+.vscode
+.idea
