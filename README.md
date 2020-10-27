@@ -1,5 +1,8 @@
 # Authentication Example
-![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
+![](https://img.shields.io/github/stars/ZackaryH8/Auth-Example?style=flat-square)
+![](https://img.shields.io/github/issues/ZAckaryH8/Auth-example?style=flat-square)
+![](https://img.shields.io/github/languages/top/ZackaryH8/Auth-Example?&style=flat-square)
+
 
 This repository is an example on how I handle user authentication to a website, including role management (Eg. User / Admin)
 
