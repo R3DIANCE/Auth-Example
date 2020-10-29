@@ -52,30 +52,27 @@ export default {
 </script>
 
 <style scoped>
+#errMsg {
+    color: #000;
+}
 .centered {
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
-
-input {
-    width: 200px;
-    margin: 10px 0;
-    padding: 10px;
-    outline: none;
-}
-
 .error {
     background-color: #fbb32d;
-    width: 50%;
-    margin: auto;
-    padding: 8px 2px;
-    margin-bottom: 20px;
     border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 8px 2px;
+    width: 50%;
 }
-
-#errMsg {
-    color: #000;
+input {
+    margin: 10px 0;
+    outline: none;
+    padding: 10px;
+    width: 200px;
 }
 </style>

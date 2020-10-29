@@ -58,16 +58,15 @@ export default {
 
 <style scoped>
 .centered {
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
-
 input {
-    width: 200px;
     margin: 10px 0;
-    padding: 10px;
     outline: none;
+    padding: 10px;
+    width: 200px;
 }
 </style>
