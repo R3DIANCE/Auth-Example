@@ -14,7 +14,7 @@ const users = require('./api/users');
 app.use(volleyball);
 app.use(
     cors({
-        origin: 'http://localhost:8080',
+        origin: 'http://192.168.1.131:8080',
     })
 );
 app.use(express.json());
