@@ -1,8 +1,8 @@
 const Joi = require('joi');
-const bcrypt = require('bcryptjs');
+const { encryptPassword, verifyPassword } = require('../auth/auth.hash');
 const db = require('../db/connection');
 
-const users = db.get('users');
+const users = db.get('user_accounts');
 const schema = Joi.object({
     username: Joi.string()
         .regex(/(^[a-zA-Z0-9_]*$)/)
@@ -37,7 +37,7 @@ const updateOne = async (req, res, next) => {
                 // update user in db
                 const updatedUser = req.body;
                 if (updatedUser.password) {
-                    updatedUser.password = await bcrypt.hash(updatedUser.password, 12);
+                    updatedUser.password = encryptPassword(updatedUser.password);
                 }
                 const result = await users.findOneAndUpdate(query, {
                     $set: updatedUser,
