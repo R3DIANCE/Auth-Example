@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const { encryptPassword, verifyPassword } = require('./auth.hash');
 const jwt = require('jsonwebtoken');
 
 const users = require('./auth.model');
@@ -39,7 +39,7 @@ const signup = async (req, res, next) => {
     console.log(req.body);
     console.log('Hi');
     try {
-        const hashed = await bcrypt.hash(req.body.password, 12);
+        const hashed = await encryptPassword(req.body.password);
         const newUser = {
             username: req.body.username,
             email: req.body.email,
@@ -57,7 +57,7 @@ const signup = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-        const result = await bcrypt.compare(req.body.password, req.loggingInUser.password);
+        const result = await verifyPassword(req.body.password, req.loggingInUser.password);
         if (result) {
             createTokenSendResponse(req.loggingInUser, res, next);
         } else {
