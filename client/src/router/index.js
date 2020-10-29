@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueMeta from 'vue-meta';
 
 import Home from '../views/Home.vue';
 import Dashboard from '../views/Dashboard.vue';
@@ -9,6 +10,7 @@ import Login from '../views/Auth/Login';
 import Register from '../views/Auth/Register';
 
 Vue.use(VueRouter);
+Vue.use(VueMeta);
 
 function isLoggedIn(to, from, next) {
     if (localStorage.token) {
@@ -55,6 +57,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+    mode: 'history',
     routes,
 });
 
