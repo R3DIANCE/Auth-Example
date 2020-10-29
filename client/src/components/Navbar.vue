@@ -7,9 +7,9 @@
             <li class="item">
                 <router-link to="/">Home</router-link>
             </li>
-            <li class="item" v-if="this.auth.loggedIn">
+            <!-- <li class="item" v-if="this.auth.loggedIn">
                 <router-link to="/dashboard">Dashboard</router-link>
-            </li>
+            </li> -->
 
             <!-- Right Aligned from here -->
             <li class="item right" v-if="!this.auth.loggedIn">
@@ -17,6 +17,10 @@
             </li>
             <li class="item" v-if="!this.auth.loggedIn">
                 <router-link to="/auth/register">Register</router-link>
+            </li>
+
+            <li class="item right" v-if="this.auth.loggedIn">
+                <router-link to="/dashboard">{{ auth.user.username }}</router-link>
             </li>
         </ul>
     </nav>
@@ -78,6 +82,10 @@ ul {
 
 .right {
     margin-left: auto;
+}
+
+.router-link-active {
+    text-transform: capitalize;
 }
 
 .router-link-exact-active {
