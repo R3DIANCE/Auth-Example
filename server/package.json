@@ -20,6 +20,7 @@
     "joi": "^17.3.0",
     "jsonwebtoken": "^8.5.1",
     "monk": "^7.1.1",
+    "sjcl": "^1.0.8",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {
