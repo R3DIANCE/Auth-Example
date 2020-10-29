@@ -1,8 +1,8 @@
 import router from '@/router/index.js';
 
-const LOGIN_URL = 'http://localhost:5000/auth/login';
-const REGISTER_URL = 'http://localhost:5000/auth/signup';
-const LOGGEDIN_URL = 'http://localhost:5000/';
+const LOGIN_URL = 'http://192.168.1.131:5000/auth/login';
+const REGISTER_URL = 'http://192.168.1.131:5000/auth/signup';
+const LOGGEDIN_URL = 'http://192.168.1.131:5000/';
 
 function waitSpinner(context, error) {
     setTimeout(() => {
@@ -84,17 +84,21 @@ export default {
     },
 
     loggedIn(context, payload) {
+        console.log(context);
         fetch(LOGGEDIN_URL, {
             headers: {
-                Authorization: `Bearer ${payload}`,
+                Authorization: `Bearer ${payload.token}`,
             },
         })
             .then(res => res.json())
             .then(result => {
                 if (result.user) {
-                    console.log(result.user);
+                    console.log(result);
                     context.commit('APP_SET_USER_DATA', result.user);
                     context.commit('APP_SET_LOGIN_STATE', true);
+                    if (payload.getStats) {
+                        context.dispatch('stats/getAll', localStorage.token, { root: true });
+                    }
                 } else {
                     localStorage.removeItem('token');
                     router.push('/auth/login');
