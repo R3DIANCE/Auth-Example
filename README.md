@@ -21,6 +21,6 @@ This repository is an example on how I handle user authentication to a website, 
 -   [express](https://www.npmjs.com/package/express)
 -   [monk](https://www.npmjs.com/package/monk)
 -   [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
--   [bcryptjs](https://www.npmjs.com/package/bcryptjs)
+-   [sjcl](https://www.npmjs.com/package/sjcl)
 
 [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
