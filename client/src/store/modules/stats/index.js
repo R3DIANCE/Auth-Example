@@ -6,6 +6,9 @@ const state = {
     altVServer: {},
     userCount: 0,
     adminCount: 0,
+    cpuUsage: 0,
+    ramUsage: 0,
+    altLogs: '',
 };
 
 export default {

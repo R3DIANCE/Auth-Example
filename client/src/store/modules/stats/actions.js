@@ -22,24 +22,26 @@ export default {
                 .then(result => {
                     context.commit('APP_SET_STATS', result);
                 });
+            getAltStats(context);
         }
     },
-
-    getAltV(context, payload) {
-        if (this.getters['auth/isAdmin']) {
-            fetch(ALTV_URL, {
-                method: 'GET',
-                headers: { 'content-Type': 'application/json' },
-            })
-                .then(res => {
-                    res.json().then(json => {
-                        const rebelServer = json.find(server => server.host == '185.254.99.20');
-                        context.commit('APP_SET_ALTV_SERVER', rebelServer);
-                    });
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }
+    updateAltStats(context) {
+        getAltStats(context);
     },
 };
+
+function getAltStats(context) {
+    fetch(ALTV_URL, {
+        method: 'GET',
+        headers: { 'content-Type': 'application/json' },
+    })
+        .then(res => {
+            res.json().then(json => {
+                const rebelServer = json.find(server => server.host == '185.254.99.20');
+                context.commit('APP_SET_ALTV_SERVER', rebelServer);
+            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
