@@ -15,10 +15,11 @@ const schema = Joi.object({
 });
 
 const list = async (req, res, next) => {
-    try {
-        const result = await users.find({}, '-password');
+    const result = await users.find({}, ['username', 'active', 'role']);
+    console.log(result);
+    if (result) {
         res.json(result);
-    } catch (error) {
+    } else if (error) {
         next(error);
     }
 };
