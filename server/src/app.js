@@ -6,11 +6,18 @@ const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
+const rateLimit = require('express-rate-limit');
 const middleware = require('./auth/auth.middlewares');
 const auth = require('./auth/auth.routes');
 const stats = require('./api/stats');
 const users = require('./api/users');
 
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
 app.use(volleyball);
 app.use(
     cors({
