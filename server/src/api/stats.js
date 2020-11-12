@@ -1,20 +1,26 @@
 const express = require('express');
+const fs = require('fs');
+const os = require('os');
+const { cpuPercentage } = require('../tasks/system');
+const altLogs = require('../tasks/alt.interact');
 const db = require('./../db/connection');
 const users = db.get('user_accounts');
 
 const router = express.Router();
 
 router.get('/all', async (req, res, next) => {
-    const stats = {
-        userCount: 0,
-        adminCount: 0,
-    };
-
     const userCount = await users.count();
     const adminCount = await users.count({ role: 'admin' });
 
-    stats.userCount = userCount;
-    stats.adminCount = adminCount;
+    const ramPercentage = Math.round(100 - (os.freemem() / os.totalmem()) * 100);
+
+    const stats = {
+        userCount,
+        adminCount,
+        cpuPercentage: cpuPercentage(),
+        ramPercentage,
+        altLogs: await altLogs.getLogs(),
+    };
 
     res.json(stats);
 });
