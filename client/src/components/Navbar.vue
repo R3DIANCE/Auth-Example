@@ -7,9 +7,6 @@
             <li class="item">
                 <router-link to="/">Home</router-link>
             </li>
-            <!-- <li class="item" v-if="this.auth.loggedIn">
-                <router-link to="/dashboard">Dashboard</router-link>
-            </li> -->
 
             <!-- Right Aligned from here -->
             <li class="item right" v-if="!this.auth.loggedIn">
