@@ -9,6 +9,9 @@ import Dashboard from '../views/Dashboard.vue';
 import Login from '../views/Auth/Login';
 import Register from '../views/Auth/Register';
 
+// Manage
+import manageUsers from '../views/Manage/Users';
+
 Vue.use(VueRouter);
 Vue.use(VueMeta);
 
@@ -53,6 +56,14 @@ const routes = [
         name: 'Register',
         component: Register,
         beforeEnter: isLoggedInToDashboard,
+    },
+
+    // Management
+    {
+        path: '/manage/users',
+        name: 'manageUsers',
+        component: manageUsers,
+        beforeEnter: isLoggedIn,
     },
 ];
 
