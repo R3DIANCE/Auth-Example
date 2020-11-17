@@ -4,6 +4,6 @@ const controller = require('../controllers/users.controller');
 const router = express.Router();
 
 router.get('/', controller.list);
-router.patch('/:id', controller.updateOne);
+router.post('/manage/toggleactive', controller.toggleActiveState);
 
 module.exports = router;
