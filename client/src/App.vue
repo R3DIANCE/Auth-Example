@@ -7,6 +7,7 @@
 
 <script>
 import Navbar from './components/Navbar';
+
 export default {
     components: {
         Navbar,
@@ -42,6 +43,10 @@ body {
 
 .button:hover {
     background-color: #e24c4c;
+    cursor: pointer;
+}
+
+.hover {
     cursor: pointer;
 }
 </style>
