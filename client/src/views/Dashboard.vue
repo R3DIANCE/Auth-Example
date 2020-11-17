@@ -82,7 +82,6 @@ export default {
         ...mapGetters({
             isAdmin: 'auth/isAdmin',
         }),
-
         usersOnlinePercentage() {
             if (this.stats.altVServer) {
                 let percentage = Math.round((this.stats.altVServer.players / this.stats.altVServer.maxPlayers) * 100);
@@ -99,7 +98,6 @@ export default {
         setInterval(() => {
             this.$store.dispatch('stats/updateAltStats');
         }, 300000);
-    },
 
     updated() {
         const altLogsElement = document.getElementById('altLogs');
@@ -113,6 +111,7 @@ export default {
 <style lang="less" scoped>
 @import '@/assets/css/circle.less';
 @import '@/assets/css/colors.less';
+
 
 #dasboard {
     padding: 15px;
@@ -157,7 +156,6 @@ export default {
     white-space: pre-line;
     height: 200px;
     overflow-y: auto;
-}
 
 #altLogs::-webkit-scrollbar {
     width: 3px;
@@ -170,7 +168,6 @@ export default {
 #altLogs::-webkit-scrollbar-thumb {
     background: @main-red;
     border-radius: 10px;
-}
 
 #altLogs::-webkit-scrollbar-thumb:hover {
     background: @other-red;

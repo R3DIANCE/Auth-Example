@@ -3,6 +3,7 @@ import router from '@/router/index.js';
 const API_URL = 'http://192.168.1.131:5000/api/v1/users';
 const TOGGLE_ACTIVE = 'http://192.168.1.131:5000/api/v1/users/manage/toggleactive';
 
+
 export default {
     getAllUsers(context, payload) {
         fetch(API_URL, {
