@@ -32,7 +32,7 @@ export default {
             })
             .then(result => {
                 if (!result) {
-                    waitSpinner(context, 'Failed to Login');
+                    waitSpinner(context, 'Unable to login, please try again!');
                 } else {
                     localStorage.token = result.token;
                     setTimeout(() => {
