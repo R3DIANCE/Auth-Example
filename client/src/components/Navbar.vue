@@ -17,7 +17,10 @@
             </li>
 
             <li class="item right" v-if="this.auth.loggedIn">
-                <router-link to="/dashboard">{{ auth.user.username }}</router-link>
+                <router-link to="/dashboard">Dashboard</router-link>
+            </li>
+            <li class="item" v-if="this.auth.loggedIn">
+                <router-link to="/manage/users">Manage</router-link>
             </li>
         </ul>
     </nav>

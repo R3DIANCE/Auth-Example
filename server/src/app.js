@@ -21,7 +21,7 @@ app.use(limiter);
 app.use(volleyball);
 app.use(
     cors({
-        origin: 'http://192.168.1.131:8080',
+        origin: '*',
     })
 );
 app.use(express.json());
