@@ -15,52 +15,33 @@ const schema = Joi.object({
 });
 
 const list = async (req, res, next) => {
-    const result = await users.find({}, ['username', 'active', 'role']);
-    console.log(result);
+    const result = await users.find({}, { projection: { email: 0, password: 0 }, limit: 10 });
     if (result) {
+        console.log(result);
         res.json(result);
     } else if (error) {
         next(error);
     }
 };
 
-const updateOne = async (req, res, next) => {
-    const { id: _id } = req.params;
-    // validate id params
-    try {
-        // validate req body
-        const result = schema.validate(req.body);
-        if (!result.error) {
-            // if valid: find user in db with given id
-            const query = { _id };
-            const user = await users.findOne(query);
-            if (user) {
-                // update user in db
-                const updatedUser = req.body;
-                if (updatedUser.password) {
-                    updatedUser.password = encryptPassword(updatedUser.password);
-                }
-                const result = await users.findOneAndUpdate(query, {
-                    $set: updatedUser,
-                });
-                // respond with user
-                delete result.password;
-                res.json(result);
-            } else {
-                // if not exists - send 404 (with user not found)
-                next();
-            }
-        } else {
-            // if not valid - send an error with the reason
-            res.status(422);
-            throw new Error(result.error);
+const toggleActiveState = async (req, res, next) => {
+    const update = await users.findOneAndUpdate(
+        {
+            _id: req.body._id,
+        },
+        {
+            $set: { active: !req.body.active },
         }
-    } catch (error) {
-        next(error);
+    );
+
+    if (update) {
+        res.json(update);
+    } else {
+        next();
     }
 };
 
 module.exports = {
     list,
-    updateOne,
+    toggleActiveState,
 };
