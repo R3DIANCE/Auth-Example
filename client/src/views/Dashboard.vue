@@ -52,8 +52,8 @@
         <br />
 
         <h3>Server Log</h3>
-        <div id="altLogs" v-if="this.altLogs">
-            {{ this.altLogs }}
+        <div id="altLogs" v-if="stats.altLogs">
+            {{ stats.altLogs }}
         </div>
 
         <button class="button" @click="logout">Logout</button>
@@ -82,9 +82,7 @@ export default {
         ...mapGetters({
             isAdmin: 'auth/isAdmin',
         }),
-        altLogs() {
-            return this.stats.altLogs;
-        },
+
         usersOnlinePercentage() {
             if (this.stats.altVServer) {
                 let percentage = Math.round((this.stats.altVServer.players / this.stats.altVServer.maxPlayers) * 100);
@@ -101,16 +99,20 @@ export default {
         setInterval(() => {
             this.$store.dispatch('stats/updateAltStats');
         }, 300000);
-        // setTimeout(() => {
-        //     console.log(this.altLogs);
-        // }, 3000);
+    },
+
+    updated() {
+        const altLogsElement = document.getElementById('altLogs');
+        if (altLogsElement) {
+            altLogsElement.scrollTop = altLogsElement.scrollHeight;
+        }
     },
 };
 </script>
 
 <style lang="less" scoped>
-@import '../assets/css/circle.less';
-@import '../assets/css/colors.less';
+@import '@/assets/css/circle.less';
+@import '@/assets/css/colors.less';
 
 #dasboard {
     padding: 15px;
@@ -131,8 +133,8 @@ export default {
 .card {
     display: flex;
     flex-direction: column;
-    background-color: #2f2f2f;
-    color: #fff;
+    background-color: @dark-grey;
+    color: @white;
     padding: 15px;
     margin: 0px 10px 0px 0px;
     width: 100%;
@@ -147,14 +149,14 @@ export default {
 }
 
 #altLogs {
-    background-color: #2f2f2f;
+    background-color: @dark-grey;
     color: #acacac;
     padding: 5px 10px;
     border-radius: 3px;
     margin: 10px 0px;
     white-space: pre-line;
     height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #altLogs::-webkit-scrollbar {
@@ -167,7 +169,7 @@ export default {
 
 #altLogs::-webkit-scrollbar-thumb {
     background: @main-red;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 #altLogs::-webkit-scrollbar-thumb:hover {
@@ -187,7 +189,7 @@ export default {
         margin: 3px;
     }
     #altLogs {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 }
 
